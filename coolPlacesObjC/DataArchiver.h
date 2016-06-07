@@ -10,7 +10,11 @@
 #import <UIKit/UIKit.h>
 #import "PostModel.h"
 
-@interface DataArchiver : NSObject
+@interface DataArchiver : NSObject {
+    NSUserDefaults *defaults;
+}
+
+@property (nonatomic, strong) NSMutableArray *loadedPosts;
 
 + (id)instance;
 - (void)savePosts;
@@ -18,6 +22,6 @@
 - (NSString*)saveImageAndCreatePathWithImage:(UIImage*)image;
 - (UIImage* _Nullable) imageForPathString:(NSString*)path;
 - (void)addPost:(PostModel*)post;
-- (NSString*)documentsPathForFileName:(NSString*)name;
++ (NSString*)documentsPathForFileName:(NSString*)name;
 
 @end

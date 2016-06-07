@@ -7,12 +7,7 @@
 //
 #import "DataArchiver.h"
 
-@implementation DataArchiver {
-
-     NSArray<PostModel*> *loadedPosts; //PostModel Array
-    
-    
-}
+@implementation DataArchiver 
 
 #define KEY_POSTS "posts"
 
@@ -27,50 +22,66 @@
     return instance;
 }
 
+- (id) init {
+    if (self = [super init]) {
+        
+        _loadedPosts = [[NSMutableArray alloc] init];
+        defaults = [NSUserDefaults standardUserDefaults];
+    }
+    return self;
+}
+
 - (void)savePosts {
     //returns data object
-    NSKeyedArchiver *postsData = [NSKeyedArchiver archivedDataWithRootObject:loadedPosts];
-    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] init];
+    NSData *postsData = [NSKeyedArchiver archivedDataWithRootObject:_loadedPosts];
     NSString *key = [NSString stringWithFormat:@"%s",KEY_POSTS];
-    [userDefaults setObject:postsData forKey: key];
-    [userDefaults synchronize];
+    [defaults setObject:postsData forKey: key];
+    [defaults synchronize];
 }
 
 - (void)loadPosts {
     
-    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] init];
     NSString *key = [NSString stringWithFormat:@"%s",KEY_POSTS];
-    //    if (x != nil)
-    NSData *postsData = [userDefaults objectForKey: key];
+    NSData *postsData = [defaults objectForKey: key];
     
-   NSArray<PostModel*> *postArray = [NSKeyedUnarchiver unarchiveObjectWithData:postsData];
+    if (postsData != nil) {
+    
+    NSMutableArray *postArray = [NSKeyedUnarchiver unarchiveObjectWithData:postsData];
     
     if (postArray != nil) {
-        loadedPosts = postArray;
+        _loadedPosts = postArray;
     }
     
     NSNotificationCenter *notif = [[NSNotificationCenter alloc] init];
     [notif postNotificationName:@"postsLoaded" object:nil];
-    
+    }
 }
 
 - (NSString*)saveImageAndCreatePathWithImage:(UIImage*)image {
-    NSString *str = @"";
-    return str;
+    NSData *imgData = UIImagePNGRepresentation(image);
+    NSString *imgPath = [NSString stringWithFormat:@"image%f.png", [NSDate timeIntervalSinceReferenceDate]];
+    NSString *fullPath = [self documentsPathForFileName:imgPath];
+    [imgData writeToFile:fullPath atomically:YES];
+    return imgPath;
 }
 
 - (UIImage* _Nullable) imageForPathString:(NSString*)path {
-    UIImage *img = [UIImage imageWithContentsOfFile:path];
+    NSString *fullPath = [self documentsPathForFileName:path];
+    UIImage *img = [UIImage imageNamed:fullPath];
     return img;
 }
 
 - (void)addPost:(PostModel*)post {
+    [_loadedPosts addObject:post];
+    [self savePosts];
+    [self loadPosts];
     
 }
 
 - (NSString*)documentsPathForFileName:(NSString*)name {
-    NSString *str = @"";
-    return str;
+    NSArray<NSString*> *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *fullPath = [paths objectAtIndex:0];
+    return [fullPath stringByAppendingPathComponent:name];
 }
 
 
