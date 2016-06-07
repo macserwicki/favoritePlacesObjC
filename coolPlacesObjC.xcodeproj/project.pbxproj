@@ -14,6 +14,8 @@
 		522D7BA31D024D560038AA05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522D7BA21D024D560038AA05 /* Assets.xcassets */; };
 		522D7BA61D024D560038AA05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522D7BA41D024D560038AA05 /* LaunchScreen.storyboard */; };
 		522D7BB31D024EBD0038AA05 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 522D7BB21D024EBD0038AA05 /* PostModel.m */; };
+		522D7BB61D049A730038AA05 /* DataArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 522D7BB51D049A730038AA05 /* DataArchiver.m */; };
+		522D7BB91D049AB40038AA05 /* AddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522D7BB81D049AB40038AA05 /* AddPostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		522D7BA71D024D560038AA05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		522D7BB11D024EBD0038AA05 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
 		522D7BB21D024EBD0038AA05 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
+		522D7BB41D049A730038AA05 /* DataArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataArchiver.h; sourceTree = "<group>"; };
+		522D7BB51D049A730038AA05 /* DataArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataArchiver.m; sourceTree = "<group>"; };
+		522D7BB71D049AB40038AA05 /* AddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostViewController.h; sourceTree = "<group>"; };
+		522D7BB81D049AB40038AA05 /* AddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,8 @@
 		522D7BAD1D024DFE0038AA05 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				522D7BB41D049A730038AA05 /* DataArchiver.h */,
+				522D7BB51D049A730038AA05 /* DataArchiver.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -112,6 +120,8 @@
 			children = (
 				522D7B9C1D024D560038AA05 /* ViewController.h */,
 				522D7B9D1D024D560038AA05 /* ViewController.m */,
+				522D7BB71D049AB40038AA05 /* AddPostViewController.h */,
+				522D7BB81D049AB40038AA05 /* AddPostViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -188,6 +198,8 @@
 			files = (
 				522D7B9E1D024D560038AA05 /* ViewController.m in Sources */,
 				522D7BB31D024EBD0038AA05 /* PostModel.m in Sources */,
+				522D7BB91D049AB40038AA05 /* AddPostViewController.m in Sources */,
+				522D7BB61D049A730038AA05 /* DataArchiver.m in Sources */,
 				522D7B9B1D024D560038AA05 /* AppDelegate.m in Sources */,
 				522D7B981D024D560038AA05 /* main.m in Sources */,
 			);

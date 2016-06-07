@@ -10,4 +10,5 @@
 
 @interface PostModel : NSObject <NSCoding>
 
+
 @end
