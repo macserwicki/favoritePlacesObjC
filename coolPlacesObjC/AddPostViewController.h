@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataArchiver.h"
 
-@interface AddPostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddPostViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *postDescriptionTextField;
+@property (weak, nonatomic) IBOutlet UIButton *postPhotoBrowserButton;
+@property (weak, nonatomic) IBOutlet UIImageView *postPhotoImageView;
+
 
 @end

@@ -14,15 +14,63 @@
 
 @implementation AddPostViewController
 
+UIImagePickerController *imagePicker;
+DataArchiver *dataArchiver;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    dataArchiver = [[DataArchiver alloc] init];
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    _postDescriptionTextField.delegate = self;
+    _postTitleTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)savePostButtonPressed:(UIButton *)sender {
+    
+    NSString *title = _postTitleTextField.text;
+    NSString *desc = _postDescriptionTextField.text;
+    UIImage *image = _postPhotoImageView.image;
+  
+    NSString *imagePath;
+    
+    if (image) {
+    
+    NSString *imagePath = [[DataArchiver instance] saveImageAndCreatePathWithImage:image];
+    }
+    
+    if (imagePath) {
+    
+        PostModel *post = [[PostModel alloc] initWithPostImagePath:imagePath andPostImageTitle:title andPostDesc:desc];
+        [[DataArchiver instance] addPost:post];
+    
+    }
+  
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)browsePhotosButtonPressed:(UIButton *)sender {
+    [sender setTitle:@"" forState: UIControlStateNormal];
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
+    [imagePicker dismissViewControllerAnimated:YES completion:nil];
+    [self.postPhotoImageView setImage:image];
+}
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self.postPhotoBrowserButton setTitle:@"Browse Photos" forState: UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

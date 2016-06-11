@@ -21,7 +21,21 @@
    
     
     
-    
+}
+
+
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+  return YES;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[[DataArchiver instance] loadedPosts] removeObjectAtIndex:indexPath.row];
+    [tableView reloadData];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 85.0;
 }
 
 - (void)didReceiveMemoryWarning {

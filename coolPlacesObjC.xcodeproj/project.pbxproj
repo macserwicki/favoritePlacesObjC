@@ -16,6 +16,7 @@
 		522D7BB31D024EBD0038AA05 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 522D7BB21D024EBD0038AA05 /* PostModel.m */; };
 		522D7BB61D049A730038AA05 /* DataArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 522D7BB51D049A730038AA05 /* DataArchiver.m */; };
 		522D7BB91D049AB40038AA05 /* AddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522D7BB81D049AB40038AA05 /* AddPostViewController.m */; };
+		52FE60941D07A89100C11718 /* PostCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE60931D07A89100C11718 /* PostCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		522D7BB51D049A730038AA05 /* DataArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataArchiver.m; sourceTree = "<group>"; };
 		522D7BB71D049AB40038AA05 /* AddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostViewController.h; sourceTree = "<group>"; };
 		522D7BB81D049AB40038AA05 /* AddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostViewController.m; sourceTree = "<group>"; };
+		52FE60921D07A89100C11718 /* PostCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellView.h; sourceTree = "<group>"; };
+		52FE60931D07A89100C11718 /* PostCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 			children = (
 				522D7B9F1D024D560038AA05 /* Main.storyboard */,
 				522D7BA41D024D560038AA05 /* LaunchScreen.storyboard */,
+				52FE60921D07A89100C11718 /* PostCellView.h */,
+				52FE60931D07A89100C11718 /* PostCellView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 			files = (
 				522D7B9E1D024D560038AA05 /* ViewController.m in Sources */,
 				522D7BB31D024EBD0038AA05 /* PostModel.m in Sources */,
+				52FE60941D07A89100C11718 /* PostCellView.m in Sources */,
 				522D7BB91D049AB40038AA05 /* AddPostViewController.m in Sources */,
 				522D7BB61D049A730038AA05 /* DataArchiver.m in Sources */,
 				522D7B9B1D024D560038AA05 /* AppDelegate.m in Sources */,
@@ -350,6 +356,7 @@
 				522D7BAC1D024D560038AA05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

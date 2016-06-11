@@ -10,5 +10,13 @@
 
 @interface PostModel : NSObject <NSCoding>
 
+@property (nonatomic, strong) NSString *postImagePath;
+@property (nonatomic, strong) NSString *postTitleTxt;
+@property (nonatomic, strong) NSString *postDescriptionTxt;
+
+-(id)initWithPostImagePath: (NSString*)imgPath andPostImageTitle:(NSString*)imgTitle andPostDesc:(NSString*)postDesc;
+
+-(id)initWithCoder:(NSCoder *)aDecoder;
+-(void)encodeWithCoder:(NSCoder *)aCoder;
 
 @end
