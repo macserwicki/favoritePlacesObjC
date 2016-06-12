@@ -14,19 +14,22 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    archiver = [DataArchiver instance];
     [[self.postImageView layer] setCornerRadius: self.postImageView.frame.size.width / 2];
     [self.postImageView setClipsToBounds:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    
     // Configure the view for the selected state
 }
 
 - (void)configureCellWithPost: (PostModel*)post {
     _postTitleLabel.text = [post postTitleTxt];
-    _postImageView.image = [UIImage imageWithContentsOfFile:[post postImagePath]];
     _postDescriptionLabel.text = [post postDescriptionTxt];
+    [_postImageView setImage:[archiver imageForPathString:post.postImagePath]];
 }
 
 

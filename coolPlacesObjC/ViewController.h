@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataArchiver.h"
+#import "PostCellView.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -15,7 +16,7 @@
 @property PostModel *postModel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (void) onPostsLoaded:(NSNotificationCenter *)notification;
+- (void) postsLoaded:(NSNotification *)notification;
 
 
 

@@ -21,6 +21,10 @@ DataArchiver *dataArchiver;
     [super viewDidLoad];
     dataArchiver = [[DataArchiver alloc] init];
     imagePicker = [[UIImagePickerController alloc] init];
+    
+    [[self.postPhotoImageView layer] setCornerRadius: 10];
+    [self.postPhotoImageView setClipsToBounds:YES];
+
     imagePicker.delegate = self;
     _postDescriptionTextField.delegate = self;
     _postTitleTextField.delegate = self;
@@ -35,21 +39,16 @@ DataArchiver *dataArchiver;
     NSString *title = _postTitleTextField.text;
     NSString *desc = _postDescriptionTextField.text;
     UIImage *image = _postPhotoImageView.image;
-  
     NSString *imagePath;
     
     if (image) {
-    
-    NSString *imagePath = [[DataArchiver instance] saveImageAndCreatePathWithImage:image];
+        imagePath = [[DataArchiver instance] saveImageAndCreatePathWithImage:image];
     }
     
     if (imagePath) {
-    
         PostModel *post = [[PostModel alloc] initWithPostImagePath:imagePath andPostImageTitle:title andPostDesc:desc];
         [[DataArchiver instance] addPost:post];
-    
     }
-  
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

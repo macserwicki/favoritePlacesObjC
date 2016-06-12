@@ -18,15 +18,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self.tableView setDataSource:self];
+    [self.tableView setDelegate:self];
+    self.posts = [[NSMutableArray alloc] init];
    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postsLoaded:) name:@"postsLoaded" object:nil];
     
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.tableView reloadData];
+    [[DataArchiver instance] loadPosts];
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[UITableViewCell alloc] init];
+        
+    PostModel *post = [[DataArchiver instance]loadedPosts][indexPath.row];
+ 
+    PostCellView *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCellView"];
+    
+    if (cell) {
+        [cell configureCellWithPost:post];
+        return cell;
+    } else {
+        cell = [[PostCellView alloc] init];
+        [cell configureCellWithPost: post];
+        return cell;
+    }
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -38,7 +60,7 @@
 }
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [[[DataArchiver instance]loadedPosts]count];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,12 +73,17 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 85.0;
+    return 110;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void) postsLoaded:(NSNotification *)notification {
+    [self.tableView reloadData];
 }
 
 @end

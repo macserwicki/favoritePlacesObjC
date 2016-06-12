@@ -48,12 +48,17 @@
     
     NSMutableArray *postArray = [NSKeyedUnarchiver unarchiveObjectWithData:postsData];
     
+        if (postsData){
     if (postArray != nil) {
         _loadedPosts = postArray;
+    } else {
+        NSLog(@"Posts Array is nil");
+    } } else {
+        NSLog(@"Posts data is nil");
     }
-    
-    NSNotificationCenter *notif = [[NSNotificationCenter alloc] init];
-    [notif postNotificationName:@"postsLoaded" object:nil];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"postsLoaded" object:nil userInfo:nil];
+        
     }
 }
 
